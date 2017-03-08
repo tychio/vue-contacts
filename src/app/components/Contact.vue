@@ -10,6 +10,7 @@
 <script>
 class People {
     constructor (info) {
+        info = info || {};
         this.id = info.id || 0;
         this.firstName = info.first_name || '';
         this.lastName = info.last_name || '';
@@ -19,7 +20,7 @@ class People {
 }
 
 export default {
-    name: 'contact',
+    name: 'Contact',
     props: ['info'],
     data() {
         return {
