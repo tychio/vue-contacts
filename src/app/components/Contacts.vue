@@ -1,6 +1,6 @@
 <template>
-<ul>
-    <li v-for="contact in contacts">
+<ul class="list-group">
+    <li class="list-group-item" v-for="contact in contacts">
         <contact v-bind:info="contact"></contact>
     </li>
 </ul>
