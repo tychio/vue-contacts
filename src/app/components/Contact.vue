@@ -1,10 +1,10 @@
 <template>
-    <div>
-        <span>{{people.firstName}}</span>
-        <span>{{people.lastName}}</span>
-        <span>{{people.email}}</span>
-        <span>{{people.description}}</span>
-    </div>
+<div>
+    <span>{{people.firstName}}</span>
+    <span>{{people.lastName}}</span>
+    <span>{{people.email}}</span>
+    <span>{{people.description}}</span>
+</div>
 </template>
 
 <script>
