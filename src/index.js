@@ -2,6 +2,8 @@ import Vue from 'vue';
 import App from './app/containers/App.vue';
 
 import './index.scss';
+import 'normalize.css';
+
 import VueRouter from 'vue-router';
 Vue.use(VueRouter);
 
