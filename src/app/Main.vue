@@ -12,7 +12,7 @@
 <script>
 import Header from './Header.vue';
 import Title from './Title.vue';
-import Contacts from './contacts/contacts.vue';
+import Contacts from './components/Contacts.vue';
 import Footer from './Footer.vue';
 
 export default {

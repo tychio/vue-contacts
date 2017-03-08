@@ -1,16 +1,16 @@
 <template>
     <ul>
-        <li v-for="item in contacts">
-            <contact v-bind:info="item"></contact>
+        <li v-for="contact in contacts">
+            <contact v-bind:info="contact"></contact>
         </li>
     </ul>
 </template>
 
 <script>
-    import Contact from './contact.vue'
+    import Contact from './Contact.vue'
 
     export default {
-        name: 'contacts',
+        name: 'Contacts',
         data() {
             return {
                 contacts: [{
@@ -23,7 +23,7 @@
             };
         },
         components: {
-            Contact
+            'contact': Contact
         }
     }
 </script>

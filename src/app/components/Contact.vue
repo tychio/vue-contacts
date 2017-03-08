@@ -18,13 +18,13 @@ class People {
     }
 }
 
-    export default {
-        name: 'contact',
-        props: ['info'],
-        data() {
-            return {
-                people: new People(this.info)
-            };
-        }
+export default {
+    name: 'contact',
+    props: ['info'],
+    data() {
+        return {
+            people: new People(this.info)
+        };
     }
+}
 </script>
