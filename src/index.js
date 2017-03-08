@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import Main from './app/Main.vue';
+import App from './app/containers/App.vue';
 
 import './index.scss';
 import VueRouter from 'vue-router';
@@ -11,7 +11,7 @@ const router = new VueRouter({
     {
       path: '/',
       components: {
-        default: Main
+        default: App
       }
     }
   ]
