@@ -5,10 +5,13 @@ export const initialState = {
 };
 
 export default {
-  [types.LOAD_CONTACTS](state, text) {
-    state.contacts = text.contacts;
+  [types.LOAD_CONTACTS](state, data) {
+    state.contacts = data.contacts;
   },
-  [types.DELETE_CONTACT](state, text) {
-    state.contacts = state.contacts.filter(contact => contact.id !== text);
+  [types.ADD_CONTACT](state, data) {
+    state.contacts.push(data);
+  },
+  [types.DELETE_CONTACT](state, data) {
+    state.contacts = state.contacts.filter(contact => contact.id !== data);
   }
 };

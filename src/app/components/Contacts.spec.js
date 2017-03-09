@@ -1,22 +1,31 @@
 import avoriaz, {mount} from 'avoriaz';
 import Vuex from 'vuex';
+import BootstrapVue from 'bootstrap-vue';
 avoriaz.use(Vuex);
+avoriaz.use(BootstrapVue);
 
 import Contacts from './Contacts.vue';
 
 describe('Contacts', () => {
-  it('should be a Contacts', () => {
-    expect(Contacts.name).toEqual('Contacts');
-  });
-
-  it('should get contacts when was created', () => {
-    const dispatch = jasmine.createSpy('dispatch');
-    mount(Contacts, {
+  let componentBuilder;
+  let dispatch;
+  beforeEach(() => {
+    dispatch = jasmine.createSpy('dispatch');
+    componentBuilder = propsData => mount(Contacts, {
+      propsData,
       store: {
         dispatch,
         getters: {contacts: [{}]}
       }
     });
-    expect(dispatch).toHaveBeenCalled();
+  });
+
+  it('should be a Contacts', () => {
+    expect(Contacts.name).toEqual('Contacts');
+  });
+
+  it('should get contacts when was created', () => {
+    componentBuilder();
+    expect(dispatch).toHaveBeenCalledWith('loadContacts');
   });
 });

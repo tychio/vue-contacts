@@ -17,7 +17,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="close_button btn btn-secondary" @click="close()">Close</button>
-        <button type="button" class="btn btn-primary">Save</button>
+        <button type="button" class="do_button btn btn-primary" @click="doAction()">Save</button>
       </div>
     </div>
   </div>
@@ -43,11 +43,18 @@ export default {
     closeHandler: {
       type: Function,
       default: () => {}
+    },
+    actionHandler: {
+      type: Function,
+      default: () => {}
     }
   },
   methods: {
-    close() {
+    close () {
       this.closeHandler();
+    },
+    doAction () {
+      this.actionHandler();
     }
   }
 }

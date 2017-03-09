@@ -12,6 +12,11 @@ export default {
       callback(respond.body);
     });
   },
+  save(contact, callback) {
+    contactsResource.save(contact).then(() => {
+      callback(contact.id);
+    });
+  },
   remove(id, callback) {
     contactsResource.delete({id}).then(() => {
       callback(id);

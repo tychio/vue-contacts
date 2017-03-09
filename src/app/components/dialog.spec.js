@@ -29,21 +29,38 @@ describe('Dialog', () => {
     });
   });
 
-  describe('close', () => {
-    it('should be closed on clicking icon at right top corner', () => {
-      const component = componentBuilder();
-      component.find('button.close')[0].simulate('click');
-
-      expect(component.hasClass('show')).toBeFalsy();
-      expect(component.hasStyle('display', 'none')).toBeTruthy();
+  describe('method', () => {
+    let handlers;
+    beforeEach(() => {
+      handlers = jasmine.createSpyObj('handlers', ['closeHandler', 'actionHandler']);
     });
 
-    it('should be closed on clicking close button', () => {
-      const component = componentBuilder();
-      component.find('button.close_button')[0].simulate('click');
+    describe('close', () => {
+      it('should be closed on clicking icon at right top corner', () => {
+        const component = componentBuilder(handlers);
 
-      expect(component.hasClass('show')).toBeFalsy();
-      expect(component.hasStyle('display', 'none')).toBeTruthy();
+        component.find('button.close')[0].simulate('click');
+
+        expect(handlers.closeHandler).toHaveBeenCalled();
+      });
+
+      it('should be closed on clicking close button', () => {
+        const component = componentBuilder(handlers);
+
+        component.find('button.close_button')[0].simulate('click');
+
+        expect(handlers.closeHandler).toHaveBeenCalled();
+      });
+    });
+
+    describe('action', () => {
+      it('should be do action on clicking main button', () => {
+        const component = componentBuilder(handlers);
+
+        component.find('button.do_button')[0].simulate('click');
+
+        expect(handlers.actionHandler).toHaveBeenCalled();
+      });
     });
   });
 });
