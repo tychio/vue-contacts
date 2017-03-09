@@ -13,6 +13,7 @@
         </button>
       </div>
       <div class="modal-body">
+        <slot></slot>
       </div>
       <div class="modal-footer">
         <button type="button" class="close_button btn btn-secondary" @click="close()">Close</button>

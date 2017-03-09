@@ -14,7 +14,22 @@
       :title="'Create contact'"
       :isOpening="openingModal"
       :closeHandler="closeModal"
-    ></dialogue>
+    >
+      <form class="form">
+        <b-form-fieldset label="First Name" :labelSize="3" :horizontal="true">
+          <b-form-input v-model="editing.firstName"></b-form-input>
+        </b-form-fieldset>
+        <b-form-fieldset label="Last Name" :labelSize="3" :horizontal="true">
+          <b-form-input v-model="editing.lastName"></b-form-input>
+        </b-form-fieldset>
+        <b-form-fieldset label="Email" :labelSize="3" :horizontal="true">
+          <b-form-input v-model="editing.email"></b-form-input>
+        </b-form-fieldset>
+        <b-form-fieldset label="Description" :labelSize="3" :horizontal="true">
+          <b-form-input v-model="editing.description" :textarea="true"></b-form-input>
+        </b-form-fieldset>
+      </form>
+    </dialogue>
   </section>
 </div>
 </template>
@@ -28,7 +43,14 @@ export default {
     name: 'Contacts',
     data() {
       return {
-        openingModal: false
+        openingModal: false,
+        editing: {
+          id: 0,
+          firstName: '',
+          lastName: '',
+          email: '',
+          description: ''
+        }
       }
     },
     computed: mapGetters(['contacts']),
