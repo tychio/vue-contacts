@@ -1,11 +1,7 @@
 <template>
-  <header class="header">
-    <h1 class="header-title">
-      <a href="https://github.com/tychio/contacts-test" target="_blank">
-        Contacts test
-      </a>
-    </h1>
-  </header>
+  <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
+    <a class="navbar-brand" href="https://github.com/tychio/contacts-test" target="_blank">Contacts</a>
+  </nav>
 </template>
 
 <script>

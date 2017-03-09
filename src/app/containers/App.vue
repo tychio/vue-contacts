@@ -1,9 +1,9 @@
 <template>
-  <div id="root">
-    <header-component></header-component>
-    <main-component></main-component>
-    <footer-component></footer-component>
-  </div>
+<body id="root">
+  <header-component></header-component>
+  <main-component></main-component>
+  <footer-component></footer-component>
+</body>
 </template>
 
 <script>

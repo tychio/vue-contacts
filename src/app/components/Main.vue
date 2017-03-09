@@ -1,5 +1,5 @@
 <template>
-<main>
+<main class="container">
   <contacts></contacts>
 </main>
 </template>

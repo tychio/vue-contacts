@@ -1,9 +1,12 @@
 <template>
-<div>
-    <span>{{people.firstName}}</span>
-    <span>{{people.lastName}}</span>
-    <span>{{people.email}}</span>
-    <span>{{people.description}}</span>
+<div class="card">
+    <div class="card-block">
+        <h4 class="card-title">{{people.firstName}}&nbsp;{{people.lastName}}</h4>
+        <h6 class="card-subtitle mb-2 text-muted">
+            <a :href="'mailto:'+ people.email">{{people.email}}</a>
+        </h6>
+        <div class="card-text">{{people.description}}</div>
+    </div>
 </div>
 </template>
 
@@ -29,3 +32,20 @@ export default {
     }
 }
 </script>
+
+<style lang="scss">
+    .card {
+        margin-bottom: 1rem;
+
+    }
+
+    .card-block {
+        padding: 0.5rem;
+    }
+
+    @media (min-width: 768px) {
+        .card-block {
+            padding: 1rem;
+        }
+    }
+</style>
