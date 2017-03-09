@@ -9,7 +9,7 @@ describe('Contact', () => {
     expect(Contact.props).toContain('info');
   });
 
-  it('should has an instance of People with default value', function () {
+  it('should has an instance of People with default value', () => {
     const data = Contact.data();
 
     expect(data.people.id).toEqual(0);
@@ -19,13 +19,13 @@ describe('Contact', () => {
     expect(data.people.description).toEqual('');
   });
 
-  it('should has an instance of People with setting value which is passed by info', function () {
+  it('should has an instance of People with setting value which is passed by info', () => {
     Contact.info = {
-        id: 1,
-        first_name: 'John',
-        last_name: 'Smith',
-        email: 'js@gmail.com',
-        description: 'co-worker'
+      id: 1,
+      'first_name': 'John',
+      'last_name': 'Smith',
+      email: 'js@gmail.com',
+      description: 'co-worker'
     };
     const data = Contact.data();
 
