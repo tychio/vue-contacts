@@ -1,11 +1,15 @@
+import Vue from 'vue';
+import VueResource from 'vue-resource';
+Vue.use(VueResource);
+
+import {url} from '../../../conf/env.conf';
+
+const contactsResource = Vue.resource(url.api + 'contacts{/id}');
+
 export default {
   getAll(callback) {
-    callback({
-      id: 1,
-      firstName: 'John',
-      lastName: 'Smith',
-      email: 'test@gmail.com',
-      description: 'about me'
+    contactsResource.query().then(respond => {
+      callback(respond.body);
     });
   }
 };

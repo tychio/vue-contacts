@@ -1,34 +1,37 @@
 <template>
 <div class="card">
     <div class="card-block">
-        <h4 class="card-title">{{people.firstName}}&nbsp;{{people.lastName}}</h4>
+        <h4 class="card-title">{{fullname}}</h4>
         <h6 class="card-subtitle mb-2 text-muted">
-            <a :href="'mailto:'+ people.email">{{people.email}}</a>
+            <a :href="'mailto:'+ email">{{email}}</a>
         </h6>
-        <div class="card-text">{{people.description}}</div>
+        <div class="card-text">{{description}}</div>
     </div>
 </div>
 </template>
 
 <script>
-class People {
-    constructor (info) {
-        info = info || {};
-        this.id = info.id || 0;
-        this.firstName = info.firstName || '';
-        this.lastName = info.lastName || '';
-        this.email = info.email || '';
-        this.description = info.description || '';
-    }
-}
-
 export default {
     name: 'Contact',
-    props: ['info'],
+    props: {
+        info: {
+            type: Object,
+            default: {}
+        }
+    },
     data() {
+        const info = this.info;
         return {
-            people: new People(this.info)
+            id: info.id,
+            email: info.email,
+            description: info.description
         };
+    },
+    computed: {
+        fullname () {
+            const info = this.info;
+            return [info['first_name'], info['last_name']].join(' ');
+        }
     }
 }
 </script>

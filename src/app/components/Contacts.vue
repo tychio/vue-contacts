@@ -1,7 +1,7 @@
 <template>
 <ul class="list-group">
     <li v-for="contact in contacts">
-        <contact v-bind:info="contact"></contact>
+        <contact :info="contact"></contact>
     </li>
 </ul>
 </template>
