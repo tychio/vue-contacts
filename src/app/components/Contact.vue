@@ -1,6 +1,9 @@
 <template>
 <div class="card">
     <div class="card-block">
+        <button type="button" class="close" @click="remove()">
+            <span aria-hidden="true">&times;</span>
+        </button>
         <h4 class="card-title">{{fullname}}</h4>
         <h6 class="card-subtitle mb-2 text-muted">
             <a :href="'mailto:'+ email">{{email}}</a>
@@ -11,12 +14,14 @@
 </template>
 
 <script>
+import {mapActions} from 'vuex';
+
 export default {
     name: 'Contact',
     props: {
         info: {
             type: Object,
-            default: {}
+            default: () => {return {};}
         }
     },
     data() {
@@ -31,6 +36,12 @@ export default {
         fullname () {
             const info = this.info;
             return [info['first_name'], info['last_name']].join(' ');
+        }
+    },
+    methods: {
+        ...mapActions(['deleteContact']),
+        remove () {
+            this.deleteContact(this.info.id);
         }
     }
 }

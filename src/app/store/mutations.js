@@ -7,5 +7,8 @@ export const initialState = {
 export default {
   [types.LOAD_CONTACTS](state, text) {
     state.contacts = text.contacts;
+  },
+  [types.DELETE_CONTACT](state, text) {
+    state.contacts = state.contacts.filter(contact => contact.id !== text);
   }
 };

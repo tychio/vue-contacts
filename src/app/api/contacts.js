@@ -11,5 +11,10 @@ export default {
     contactsResource.query().then(respond => {
       callback(respond.body);
     });
+  },
+  remove(id, callback) {
+    contactsResource.delete({id}).then(() => {
+      callback(id);
+    });
   }
 };

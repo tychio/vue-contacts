@@ -6,3 +6,11 @@ export const loadContacts = ({commit}) => {
     commit(types.LOAD_CONTACTS, {contacts});
   });
 };
+
+export const deleteContact = ({commit}, contactId) => {
+  contactsAPI.remove(contactId, id => {
+    if (id === contactId) {
+      commit(types.DELETE_CONTACT, id);
+    }
+  });
+};

@@ -14,7 +14,7 @@ describe('Contacts', () => {
     mount(Contacts, {
       store: {
         dispatch,
-        getters: {contacts: ['contacts']}
+        getters: {contacts: [{}]}
       }
     });
     expect(dispatch).toHaveBeenCalled();

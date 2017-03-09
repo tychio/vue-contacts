@@ -2,16 +2,21 @@ import {mount} from 'avoriaz';
 import Contact from './Contact.vue';
 
 describe('Contact', () => {
+  let componentBuilder;
+  let store;
+  beforeEach(() => {
+    store = jasmine.createSpyObj('store', ['dispatch']);
+    componentBuilder = propsData => mount(Contact, {
+      propsData,
+      store
+    });
+  });
+
   it('should be a contact', () => {
     expect(Contact.name).toEqual('Contact');
   });
 
   describe('props', () => {
-    let componentBuilder;
-    beforeEach(() => {
-      componentBuilder = propsData => mount(Contact, {propsData});
-    });
-
     it('should be default value', () => {
       const component = componentBuilder();
 
@@ -46,6 +51,17 @@ describe('Contact', () => {
 
       const fullname = component.find('.card-title')[0].text();
       expect(fullname).toEqual('First Last');
+    });
+  });
+
+  describe('delete', () => {
+    it('should be able to be removed', () => {
+      const component = componentBuilder({
+        info: {id: 123}
+      });
+      component.find('button.close')[0].simulate('click');
+
+      expect(store.dispatch).toHaveBeenCalledWith('deleteContact', 123);
     });
   });
 });
