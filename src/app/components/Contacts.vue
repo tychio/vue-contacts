@@ -7,23 +7,17 @@
 </template>
 
 <script>
-import Contact from './Contact.vue'
+import { mapGetters, mapActions } from 'vuex';
+import Contact from './Contact.vue';
 
 export default {
     name: 'Contacts',
-    data() {
-        return {
-            contacts: [{
-                id: 1,
-                first_name: "John",
-                last_name: "Smith",
-                email: "test@gmail.com",
-                description: "about me"
-            }]
-        };
-    },
+    computed: mapGetters(['contacts']),
     components: {
         'contact': Contact
+    },
+    created () {
+        this.$store.dispatch('loadContacts')
     }
 }
 </script>

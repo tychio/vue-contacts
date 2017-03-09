@@ -15,8 +15,8 @@ class People {
     constructor (info) {
         info = info || {};
         this.id = info.id || 0;
-        this.firstName = info.first_name || '';
-        this.lastName = info.last_name || '';
+        this.firstName = info.firstName || '';
+        this.lastName = info.lastName || '';
         this.email = info.email || '';
         this.description = info.description || '';
     }
