@@ -13,8 +13,8 @@
       :id="'contact_modal'"
       :title="'Create contact'"
       :isOpening="openingModal"
-      :closeHandler="closeModal"
-      :actionHandler="saveContact"
+      @close="closeModal"
+      @save="saveContact"
     >
       <form class="form">
         <b-form-fieldset label="First Name" :labelSize="3" :horizontal="true">

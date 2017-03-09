@@ -32,34 +32,37 @@ describe('Dialog', () => {
   describe('method', () => {
     let handlers;
     beforeEach(() => {
-      handlers = jasmine.createSpyObj('handlers', ['closeHandler', 'actionHandler']);
+      handlers = jasmine.createSpyObj('handlers', ['close', 'save']);
     });
 
     describe('close', () => {
       it('should be closed on clicking icon at right top corner', () => {
-        const component = componentBuilder(handlers);
+        const component = componentBuilder();
+        component.vm.$on('close', handlers.close);
 
         component.find('button.close')[0].simulate('click');
 
-        expect(handlers.closeHandler).toHaveBeenCalled();
+        expect(handlers.close).toHaveBeenCalled();
       });
 
       it('should be closed on clicking close button', () => {
-        const component = componentBuilder(handlers);
+        const component = componentBuilder();
+        component.vm.$on('close', handlers.close);
 
         component.find('button.close_button')[0].simulate('click');
 
-        expect(handlers.closeHandler).toHaveBeenCalled();
+        expect(handlers.close).toHaveBeenCalled();
       });
     });
 
     describe('action', () => {
       it('should be do action on clicking main button', () => {
-        const component = componentBuilder(handlers);
+        const component = componentBuilder();
+        component.vm.$on('save', handlers.save);
 
-        component.find('button.do_button')[0].simulate('click');
+        component.find('button.save_button')[0].simulate('click');
 
-        expect(handlers.actionHandler).toHaveBeenCalled();
+        expect(handlers.save).toHaveBeenCalled();
       });
     });
   });
