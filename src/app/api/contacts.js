@@ -13,8 +13,8 @@ export default {
     });
   },
   save(contact, callback) {
-    contactsResource.save(contact).then(() => {
-      callback(contact.id);
+    contactsResource.save(contact).then(respond => {
+      callback(respond.body.id);
     });
   },
   remove(id, callback) {

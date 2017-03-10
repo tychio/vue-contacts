@@ -9,9 +9,8 @@ export const loadContacts = ({commit}) => {
 
 export const addContact = ({commit}, contact) => {
   contactsAPI.save(contact, id => {
-    if (id === contact.id) {
-      commit(types.ADD_CONTACT, contact);
-    }
+    contact.id = id;
+    commit(types.ADD_CONTACT, contact);
   });
 };
 
