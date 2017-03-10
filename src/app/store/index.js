@@ -10,6 +10,7 @@ export default new Vuex.Store({
   mutations,
   actions,
   getters: {
-    contacts: state => state.contacts
+    contacts: state => state.contacts,
+    message: state => state.message
   }
 });

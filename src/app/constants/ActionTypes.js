@@ -2,3 +2,6 @@ export const LOAD_CONTACTS = 'LOAD_CONTACTS';
 export const ADD_CONTACT = 'ADD_CONTACT';
 export const EDIT_CONTACT = 'EDIT_CONTACT';
 export const DELETE_CONTACT = 'DELETE_CONTACT';
+
+export const MESSAGE_ERROR = 'MESSAGE_ERROR';
+export const MESSAGE_SUCCESS = 'MESSAGE_SUCCESS';

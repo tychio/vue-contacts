@@ -1,7 +1,11 @@
 import * as types from '../constants/ActionTypes';
 
 export const initialState = {
-  contacts: []
+  contacts: [],
+  message: {
+    type: 'success',
+    text: ''
+  }
 };
 
 export default {
@@ -20,5 +24,12 @@ export default {
   },
   [types.DELETE_CONTACT](state, data) {
     state.contacts = state.contacts.filter(contact => contact.id !== data);
+  },
+
+  [types.MESSAGE_ERROR](state, text) {
+    state.message = {
+      text,
+      type: 'danger'
+    };
   }
 };
