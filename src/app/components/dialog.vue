@@ -1,9 +1,6 @@
 <template>
-<div class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"
-  :class="{'show': isOpening}" 
-  :style="{'display': isOpening ? 'block' : 'none'}"
-  :id="id"
->
+<transition name="fade">
+<div class="modal show" v-show="isOpening" :id="id">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -22,6 +19,7 @@
     </div>
   </div>
 </div>
+</transition>
 </template>
 
 <script>
@@ -52,8 +50,18 @@ export default {
 }
 </script>
 
-<style>
+<style lang="scss">
   .modal {
     background-color: rgba(0,0,0,.5);
+
+    &.show {
+      display: block;
+    }
+  }
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s
+  }
+  .fade-enter, .fade-leave-to {
+    opacity: 0
   }
 </style>

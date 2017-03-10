@@ -19,7 +19,6 @@ describe('Dialog', () => {
 
     it('should not be display', () => {
       const component = componentBuilder();
-      expect(component.hasClass('show')).toBeFalsy();
       expect(component.hasStyle('display', 'none')).toBeTruthy();
     });
 
