@@ -11,6 +11,13 @@ export default {
   [types.ADD_CONTACT](state, data) {
     state.contacts.push(data);
   },
+  [types.EDIT_CONTACT](state, data) {
+    state.contacts = state.contacts.map(contact =>
+      contact.id === data.id ?
+        Object.assign({}, contact, data) :
+        contact
+    );
+  },
   [types.DELETE_CONTACT](state, data) {
     state.contacts = state.contacts.filter(contact => contact.id !== data);
   }

@@ -6,15 +6,15 @@
   <section class="section">
     <ul class="list-group">
       <li v-for="contact in contacts">
-        <contact :info="contact"></contact>
+        <contact :info="contact" @edit="openModal(contact)"></contact>
       </li>
     </ul>
     <dialogue
       :id="'contact_modal'"
       :title="'Create contact'"
       :isOpening="openingModal"
-      @close="closeModal"
-      @save="saveContact"
+      @close="closeModal()"
+      @save="saveContact()"
     >
       <form class="form">
         <b-form-fieldset label="First Name" :labelSize="3" :horizontal="true">
@@ -45,33 +45,26 @@ export default {
     data() {
       return {
         openingModal: false,
-        editing: {
-          id: 0,
-          first_name: '',
-          last_name: '',
-          email: '',
-          description: ''
-        }
+        editing: {}
       }
     },
     computed: mapGetters(['contacts']),
     methods: {
-      ...mapActions(['loadContacts', 'addContact']),
-      openModal () {
+      ...mapActions(['loadContacts', 'addContact', 'editContact']),
+      openModal (contact={}) {
+        this.editing = Object.assign({}, contact);
         this.openingModal = true;
       },
       closeModal () {
         this.openingModal = false;
       },
       saveContact () {
-        this.addContact(this.editing);
-        this.editing = {
-          id: 0,
-          first_name: '',
-          last_name: '',
-          email: '',
-          description: ''
-        };
+        const id = this.editing.id;
+        if (id > 0) {
+          this.editContact(this.editing);
+        } else {
+          this.addContact(this.editing);
+        }
         this.closeModal();
       }
     },

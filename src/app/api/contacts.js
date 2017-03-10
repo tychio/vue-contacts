@@ -17,6 +17,11 @@ export default {
       callback(respond.body.id);
     });
   },
+  edit(contact, callback) {
+    contactsResource.update({id: contact.id}, contact).then(() => {
+      callback();
+    });
+  },
   remove(id, callback) {
     contactsResource.delete({id}).then(() => {
       callback(id);

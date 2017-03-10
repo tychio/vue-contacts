@@ -14,6 +14,12 @@ export const addContact = ({commit}, contact) => {
   });
 };
 
+export const editContact = ({commit}, contact) => {
+  contactsAPI.edit(contact, () => {
+    commit(types.EDIT_CONTACT, contact);
+  });
+};
+
 export const deleteContact = ({commit}, contactId) => {
   contactsAPI.remove(contactId, id => {
     if (id === contactId) {

@@ -15,7 +15,7 @@ describe('Contacts', () => {
       propsData,
       store: {
         dispatch,
-        getters: {contacts: [{}]}
+        getters: {contacts: [{id: 123}]}
       }
     });
   });

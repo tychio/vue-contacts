@@ -8,6 +8,7 @@
         <h6 class="card-subtitle mb-2 text-muted">
             <a :href="'mailto:'+ email">{{email}}</a>
         </h6>
+        <button class="btn btn-sm btn-success float-right edit_button" @click="edit()">Edit</button>
         <div class="card-text">{{description}}</div>
     </div>
 </div>
@@ -25,23 +26,29 @@ export default {
         }
     },
     data() {
-        const info = this.info;
         return {
-            id: info.id,
-            email: info.email,
-            description: info.description
+            id: this.info.id
         };
     },
     computed: {
         fullname () {
             const info = this.info;
             return [info['first_name'], info['last_name']].join(' ');
+        },
+        email () {
+            return this.info.email
+        },
+        description () {
+            return this.info.description
         }
     },
     methods: {
         ...mapActions(['deleteContact']),
         remove () {
             this.deleteContact(this.info.id);
+        },
+        edit () {
+            this.$emit('edit');
         }
     }
 }
@@ -51,6 +58,10 @@ export default {
     .card {
         margin-bottom: 1rem;
 
+    }
+
+    .card-text {
+        padding-right: 4rem;
     }
 
     .card-block {

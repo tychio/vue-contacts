@@ -38,8 +38,8 @@ describe('Contact', () => {
 
       const data = component.data();
       expect(data.id).toEqual(123);
-      expect(data.email).toEqual('a@b.com');
-      expect(data.description).toEqual('about one');
+      expect(component.find('h6.card-subtitle a')[0].text()).toEqual('a@b.com');
+      expect(component.find('.card-text')[0].text()).toEqual('about one');
     });
 
     it('should build a full name', () => {
@@ -62,6 +62,19 @@ describe('Contact', () => {
       component.find('button.close')[0].simulate('click');
 
       expect(store.dispatch).toHaveBeenCalledWith('deleteContact', 123);
+    });
+  });
+
+  describe('edit', () => {
+    it('should trigger edit event', () => {
+      const component = componentBuilder({
+        info: {id: 123}
+      });
+      const editModal = jasmine.createSpy('edit');
+      component.vm.$on('edit', editModal);
+      component.find('button.edit_button')[0].simulate('click');
+
+      expect(editModal).toHaveBeenCalled();
     });
   });
 });
