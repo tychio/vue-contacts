@@ -4,12 +4,12 @@
         <button type="button" class="close" @click="remove()">
             <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="card-title">{{fullname}}</h4>
-        <h6 class="card-subtitle mb-2 text-muted">
+        <h4 class="card-title text-nowrap">{{fullname}}</h4>
+        <h6 class="card-subtitle mb-2 text-muted text-nowrap">
             <a :href="'mailto:'+ email">{{email}}</a>
         </h6>
         <button class="btn btn-sm btn-success float-right edit_button" @click="edit()">Edit</button>
-        <div class="card-text">{{description}}</div>
+        <div class="card-text text-nowrap">{{description}}</div>
     </div>
 </div>
 </template>
