@@ -1,9 +1,9 @@
 <template>
 <div>
   <section class="section clearfix">
-    <button class="btn btn-primary float-right" @click="openModal()">Add</button>
+    <button class="btn btn-primary float-right create_button" @click="openModal()">Add</button>
   </section>
-  <section class="section">
+  <section class="section contacts_list">
     <ul class="list-group">
       <li v-for="contact in contacts">
         <contact :info="contact" @edit="openModal(contact)"></contact>
@@ -17,16 +17,16 @@
       @save="saveContact()"
     >
       <form class="form">
-        <b-form-fieldset label="First Name" :labelSize="3" :horizontal="true">
+        <b-form-fieldset class="field_first_name" label="First Name" :labelSize="3" :horizontal="true">
           <b-form-input v-model="editing.first_name"></b-form-input>
         </b-form-fieldset>
-        <b-form-fieldset label="Last Name" :labelSize="3" :horizontal="true">
+        <b-form-fieldset class="field_last_name" label="Last Name" :labelSize="3" :horizontal="true">
           <b-form-input v-model="editing.last_name"></b-form-input>
         </b-form-fieldset>
-        <b-form-fieldset label="Email" :labelSize="3" :horizontal="true">
+        <b-form-fieldset class="field_email" label="Email" :labelSize="3" :horizontal="true">
           <b-form-input v-model="editing.email"></b-form-input>
         </b-form-fieldset>
-        <b-form-fieldset label="Description" :labelSize="3" :horizontal="true">
+        <b-form-fieldset class="field_description" label="Description" :labelSize="3" :horizontal="true">
           <b-form-input v-model="editing.description" :textarea="true"></b-form-input>
         </b-form-fieldset>
       </form>
