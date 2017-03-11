@@ -23,7 +23,9 @@
         <b-form-fieldset class="field_last_name" label="Last Name" :labelSize="3" :horizontal="true">
           <b-form-input v-model="editing.last_name"></b-form-input>
         </b-form-fieldset>
-        <b-form-fieldset class="field_email" label="Email" :labelSize="3" :horizontal="true">
+        <b-form-fieldset class="field_email" label="Email" 
+          :labelSize="3" :horizontal="true" 
+          :feedback="tips.email" :state="tips.email ? 'warning': ''">
           <b-form-input v-model="editing.email"></b-form-input>
         </b-form-fieldset>
         <b-form-fieldset class="field_description" label="Description" :labelSize="3" :horizontal="true">
@@ -37,6 +39,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import emailValidator from 'email-validator';
 import Contact from './Contact.vue';
 import Dialog from './Dialog.vue';
 
@@ -45,7 +48,8 @@ export default {
     data() {
       return {
         openingModal: false,
-        editing: {}
+        editing: {},
+        tips: {}
       }
     },
     computed: mapGetters(['contacts']),
@@ -66,6 +70,13 @@ export default {
           this.addContact(this.editing);
         }
         this.closeModal();
+      }
+    },
+    watch: {
+      'editing.email' () {
+        const email = this.editing.email;
+        const erorr = email && !emailValidator.validate(email)
+        this.tips.email = erorr ? 'Please input an email!' : '';
       }
     },
     components: {
