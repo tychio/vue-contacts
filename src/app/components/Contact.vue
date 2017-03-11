@@ -54,23 +54,55 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+    @import '../styles/variable';
+
     .card {
         margin-bottom: 1rem;
+        border-color: desaturated(darken($color_item, 10%), 20%);
+        border-radius: 0;
+        background-color: $color_item;
+        -webkit-box-shadow: -4px 4px 0px -1px rgba(227,224,211,0.6);
+        -moz-box-shadow: -4px 4px 0px -1px rgba(227,224,211,0.6);
+        box-shadow: -4px 4px 0px -1px rgba(227,224,211,0.6);
+    }
 
+    .card-title {
+        color: $color_title;
+    }
+
+    .card-subtitle {
+        a,
+        a:link,
+        a:active,
+        a:visited {
+            color: $color_subtitle;
+        }
+
+        a:hover {
+            color: lighten($color_subtitle, 10%);
+        }
     }
 
     .card-text {
         padding-right: 4rem;
+        color: $color_text;
     }
 
     .card-block {
-        padding: 0.5rem;
+        padding: .5rem;
+        .close {
+            position: relative;
+            top: -.2rem;
+        }
     }
 
     @media (min-width: 768px) {
         .card-block {
             padding: 1rem;
+            .close {
+                top: -.5rem;
+            }
         }
     }
 </style>

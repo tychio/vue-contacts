@@ -1,0 +1,21 @@
+@import './variable';
+
+@mixin btn ($type, $color) {
+  .btn.btn-#{$type} {
+    background-color: $color;
+    border-color: darken($color, 5%);
+
+    &:hover {
+      background-color: darken($color, 10%);
+    }
+  }
+}
+
+.btn {
+  border-radius: 0;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+@include btn('primary', $color_btn_primary);
+@include btn('success', $color_btn_success);
